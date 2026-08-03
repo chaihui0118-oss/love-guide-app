@@ -1,31 +1,8 @@
-const cache="love-guide-v1";
-
-const files=[
-"index.html",
-"ai-love.html",
-"manifest.json"
-];
-
-
-self.addEventListener("install",e=>{
-
-e.waitUntil(
-
-caches.open(cache)
-.then(c=>c.addAll(files))
-
-);
-
-});
-
-
-self.addEventListener("fetch",e=>{
-
-e.respondWith(
-
-caches.match(e.request)
-.then(r=>r||fetch(e.request))
-
-);
-
-});
+{
+"name":"Love Guide 恋爱指南",
+"short_name":"Love Guide",
+"start_url":"index.html",
+"display":"standalone",
+"background_color":"#fff0f6",
+"theme_color":"#ff6fa5"
+}

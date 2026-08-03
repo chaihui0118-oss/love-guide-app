@@ -1,235 +1,187 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+
+<html>
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Love Guide 恋爱指南</title>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#ff6fa5">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>AI恋爱顾问</title>
+
+
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:"Microsoft YaHei",sans-serif;
-}
+
 body{
-background:linear-gradient(#ffd6e8,#fff);
-min-height:100vh;
-display:flex;
-justify-content:center;
-overflow-x:hidden;
+
+background:#fff0f6;
+
+font-family:"Microsoft YaHei";
+
 }
-/* App */
-.app{
-width:100%;
-max-width:430px;
-padding:25px 18px 100px;
-position:relative;
-}
-/* 飘落 */
-.floating{
-position:fixed;
-top:-50px;
-animation:fall linear infinite;
-z-index:1;
-}
-@keyframes fall{
-0%{
-transform:translateY(-10vh) rotate(0);
-}
-100%{
-transform:translateY(110vh) rotate(360deg);
-}
-}
-.header{
-text-align:center;
-position:relative;
-z-index:3;
-}
-.avatar{
-width:100px;
-height:100px;
-background:#ff6fa5;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:50px;
-margin:auto;
-box-shadow:0 10px 30px #ffb6d2;
-}
-h1{
-color:#ff4f91;
-margin-top:15px;
-}
-.subtitle{
-color:#888;
-margin-top:8px;
-}
+
+
 .box{
-background:white;
+
+max-width:430px;
+
+margin:auto;
+
 padding:20px;
-border-radius:25px;
-margin-top:20px;
-box-shadow:0 10px 25px rgba(255,100,150,.15);
-position:relative;
-z-index:3;
+
 }
-.box h3{
-color:#ff4f91;
-}
-.card{
+
+
+.chat{
+
 background:white;
-border-radius:22px;
-padding:18px;
-margin-top:15px;
-display:flex;
-align-items:center;
-text-decoration:none;
-color:#333;
-box-shadow:0 8px 20px rgba(255,120,170,.15);
-position:relative;
-z-index:3;
-}
-.icon{
-font-size:30px;
-margin-right:15px;
-}
-span{
-display:block;
-font-size:13px;
-color:#999;
-margin-top:5px;
-}
-/* 塔罗 */
-.tarot{
-text-align:center;
-}
-.tarot-card{
-height:220px;
-width:150px;
-margin:20px auto;
+
+padding:15px;
+
 border-radius:20px;
-background:linear-gradient(135deg,#ff9fc5,#ff5f99);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:50px;
+
+min-height:400px;
+
+}
+
+
+input{
+
+width:70%;
+
+padding:12px;
+
+border-radius:20px;
+
+border:1px solid pink;
+
+}
+
+
+button{
+
+padding:12px;
+
+border:none;
+
+background:#ff6fa5;
+
 color:white;
-cursor:pointer;
+
+border-radius:20px;
+
 }
-/* 点击爱心 */
-@keyframes heartUp{
-from{
-transform:translateY(0);
-opacity:1;
+
+
+.msg{
+
+background:#ffd6e8;
+
+padding:12px;
+
+border-radius:15px;
+
+margin:10px;
+
 }
-to{
-transform:translateY(-100px);
-opacity:0;
-}
-}
+
+
 </style>
+
 </head>
+
+
+
 <body>
-<div class="floating" style="left:10%;animation-duration:8s">🌸</div>
-<div class="floating" style="left:30%;animation-duration:10s">💗</div>
-<div class="floating" style="left:50%;animation-duration:7s">🌸</div>
-<div class="floating" style="left:70%;animation-duration:9s">💕</div>
-<div class="floating" style="left:90%;animation-duration:11s">🌸</div>
-<div class="app">
-<div class="header">
-<div class="avatar">
-💖
-</div>
-<h1>
-Love Guide
-</h1>
-<p class="subtitle">
-恋爱指南 · 找到属于你的幸福 ✨
-</p>
-</div>
+
+
 <div class="box">
-<h3>
-⭐ 今日恋爱提醒
-</h3>
-<p>
-保持自信，你的魅力会吸引对的人 💕
-</p>
+
+
+<h2>
+🤖 AI恋爱顾问
+</h2>
+
+
+<div class="chat" id="chat">
+
+<div class="msg">
+
+你好～告诉我你的恋爱问题 💕
+
 </div>
-<a class="card" href="ai-love.html">
-<div class="icon">🤖</div>
-<div>
-AI恋爱顾问
-<span>
-和AI分析你的爱情问题
-</span>
+
+
 </div>
-</a>
-<div class="card">
-<div class="icon">❤️</div>
-<div>
-如何脱单
-<span>
-提升魅力认识喜欢的人
-</span>
+
+
+<input id="text" placeholder="输入问题">
+
+<button onclick="send()">
+发送
+</button>
+
+
 </div>
-</div>
-<div class="card">
-<div class="icon">💌</div>
-<div>
-聊天技巧
-<span>
-学习暧昧沟通
-</span>
-</div>
-</div>
-<div class="card">
-<div class="icon">⭐</div>
-<div>
-星座运势
-<span>
-查看今日爱情运
-</span>
-</div>
-</div>
-<div class="box tarot">
-<h3>
-🃏 今日爱情塔罗
-</h3>
-<div class="tarot-card" onclick="tarot()">
-🔮
-</div>
-<p id="result">
-点击抽牌
-</p>
-</div>
-</div>
+
+
+
+
 <script>
-function tarot(){
-let cards=[
-"恋人 正位 ❤️ 代表新的爱情机会",
-"星星 正位 ✨ 代表希望与幸福",
-"圣杯二 正位 💕 代表双向喜欢",
-"命运之轮 正位 ⭐ 代表缘分出现"
-];
-document.getElementById("result").innerHTML=
-cards[Math.floor(Math.random()*cards.length)];
+
+
+function send(){
+
+
+let t=document.getElementById("text").value;
+
+
+let chat=document.getElementById("chat");
+
+
+chat.innerHTML+=`
+
+<div class="msg">
+你：${t}
+</div>
+`;
+
+
+let answer="";
+
+
+if(t.includes("喜欢")){
+
+answer="判断喜欢可以观察他的主动程度、关心和行动 💕";
+
 }
-document.onclick=function(e){
-let h=document.createElement("div");
-h.innerHTML="💗";
-h.style.position="fixed";
-h.style.left=e.clientX+"px";
-h.style.top=e.clientY+"px";
-h.style.animation="heartUp 1s forwards";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),1000);
+
+else if(t.includes("脱单")){
+
+answer="多认识新朋友，提高自信，你的魅力会增加 🌸";
+
 }
-if("serviceWorker" in navigator){
-navigator.serviceWorker.register("service-worker.js");
+
+else{
+
+answer="告诉我更多情况，我帮你分析爱情问题 💖";
+
 }
+
+
+
+chat.innerHTML+=`
+
+<div class="msg">
+AI：${answer}
+</div>
+`;
+
+}
+
+
 </script>
+
+
 </body>
+
 </html>
